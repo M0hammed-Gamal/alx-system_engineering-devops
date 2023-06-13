@@ -1,2 +1,2 @@
 #!/bin/bash
-alias pwd="p *"
+alias p="pwd"
