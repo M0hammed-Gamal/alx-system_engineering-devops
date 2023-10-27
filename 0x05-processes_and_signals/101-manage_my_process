@@ -1,35 +1,34 @@
 #!/usr/bin/env bash
-# Write a script that manages the manage_my_process process:
-# If "start" argument passed:
-## Starts
+#Bash script that creates a subprocess
+. /lib/lsb/init-functions
 
-start_p() {
+PIDFILE=/var/run/my_process.pid
+
+start() {
     ./manage_my_process &
-    echo $$ > /var/run/my_process.pid
+    echo "$!" > "$PIDFILE"
 }
 
-stop_p() {
-    rm /var/run/my_process.pid
-    pkill -of manage_my_process
+stop() {
+    sudo kill -15 "$(cat "$PIDFILE")" && rm -f "$PIDFILE"
 }
 
-has_arg_1() {
-    if [ "$CMD" == "start" ]; then
-	start_p
-	echo "manage_my_process started"
-    elif [ "$CMD" == "stop" ]; then
-	stop_p
-	echo "manage_my_process stopped"
-    elif [ "$CMD" == "restart" ]; then
-	stop_p
-	start_p
-	echo "manage_my_process restarted"
-    fi
-}
+case "$1" in 
+    start)
+       start
+       echo "manage_my_process started"
+       ;;
+    stop)
+       stop
+       echo "manage_my_process stopped"
+       ;;
+    restart)
+       stop
+       start
+       echo "manage_my_process restarted"
+       ;;
+    *)
+       echo "Usage: manage_my_process {start|stop|restart}"
+esac
 
-if [ $# -gt 0 ]; then
-    CMD="$1"
-    has_arg_1
-else
-    echo "Usage: manage_your_process {start|stop|restart}"
-fi
+exit 0
