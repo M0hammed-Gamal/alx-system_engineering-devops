@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
-# Bash script that displays To infinity and beyond indefinitely.
-ciclo=true
-while [ "$ciclo" ]
+# Write a script that:
+# Indefinitely writes "I am alive!" to file /tmp/my_process
+while true
 do
-        echo $"I am alive!" >> /tmp/my_process
-        sleep 2
+    echo "I am alive!" >> /tmp/my_process
+    sleep 2
 done
