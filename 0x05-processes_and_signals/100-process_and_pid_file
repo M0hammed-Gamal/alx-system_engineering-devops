@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+#Process and PID file
+echo $$ > /var/run/myscript.pid
+ciclo=true
+trap typ 3
+typ()
+{
+	rm -rf /var/run/myscript.pid
+	exit 1
+}
+trap 'echo $"Y U no love me?!"' 2
+trap 'echo $"I hate the kill command"; rm -rf /var/run/myscript.pid; exit 1' 15
+while [ "$ciclo" ]
+do
+	echo $"To infinity and beyond"
+	sleep 2
+done

@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+#Bash script
+a=$(find . -type f | cut -d "-" -f 2 | tr -d './')
+for i in $a;
+do
+        echo "$i"
+done
