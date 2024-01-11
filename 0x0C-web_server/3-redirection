@@ -1,4 +1,5 @@
- Script that configures a new Ubuntu machine to Perform a 301-redirection
+#!/usr/bin/env bash
+#  A Script that configures a new Ubuntu machine to Perform a 301-redirection
 
 # Upadating Packages before Installations
 sudo apt-get update
