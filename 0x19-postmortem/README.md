@@ -1,5 +1,6 @@
 Postmortem Report
 504 Error while accessing a given URL
+![image](https://github.com/M0hammed-Gamal/alx-system_engineering-devops/assets/133115895/22f65eda-7235-425b-ac17-d72e8f3bb842)
 
 Incident report for 504 error / Site Outage
 Summary
